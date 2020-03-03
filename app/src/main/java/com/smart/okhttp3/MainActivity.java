@@ -50,6 +50,34 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+
+                final String responeString = response.body().string();
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        /**do something
+                         * 写Json解析
+                         * */
+                    }
+                });
+            }
+        });
+    }
+
+    private void postHttp(){
+        String url = "http://172.18.5.248:8080/AICameraApi/camera/serverInfo";
+        Map<String, String> map = new HashMap<>();
+        map.put("name","John");
+        OkHttp3Utils.doPost(url, map, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
                 final String responeString = response.body().string();
                 runOnUiThread(new Runnable() {
                     @Override
